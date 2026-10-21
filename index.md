@@ -1,13 +1,13 @@
 ---
 title: "PHP critical security release, October 2026 (CVE-2026-109618, CVE-2026-109619)"
 date: 2026-10-21
-updated: 2026-10-21 2:57 PM ET
+updated: 2026-10-21 3:24 PM ET
 summary: "PHP released 8.5.12, 8.4.27, 8.3.36 and 8.2.35 on 21 Oct 2026, ahead of the 10:00 AM ET slot, fixing two critical (CVSS 4.0 9.2) unauthenticated remote code execution bugs. By 2:55 PM ET Ubuntu, Debian, the Ondrej PPA, the Docker php image and Plesk had fixed builds; Red Hat and AlmaLinux had not published errata."
 ---
 
 # PHP critical security release, October 2026
 
-**Status at 2:57 PM ET, 21 Oct 2026: fixes RELEASED, packages arriving.** PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 are out. Ubuntu, Debian, the Ondrej PPA, the Docker `php` image and Plesk now ship fixed builds; CloudLinux is rolling out alt-php; Red Hat and AlmaLinux had published no errata at 2:55 PM ET. Neither CVE is in CISA KEV. This page is re-checked every 30 minutes for two days.
+**Status at 3:24 PM ET, 21 Oct 2026: fixes RELEASED, packages arriving. An unconfirmed Fediverse claim of a further bug in 8.5.12 was reportedly dismissed by PHP as "not a real issue" (secondhand).** PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 are out. Ubuntu, Debian, the Ondrej PPA, the Docker `php` image and Plesk now ship fixed builds; CloudLinux is rolling out alt-php; Red Hat and AlmaLinux had published no errata at 2:55 PM ET. Neither CVE is in CISA KEV. This page is re-checked every 30 minutes for two days.
 
 ## TL;DR
 
@@ -21,6 +21,7 @@ PHP released 8.5.12, 8.4.27, 8.3.36 and 8.2.35 on 21 October 2026 to fix two cri
 - **Exploitation:** Patchstack's newest entry still says its telemetry shows "only probing attacks, with no hard evidence of breaches yet" ([source](https://patchstack.com/articles/php-major-vulnerability-alert-10-2026/)). CERT-EU's v1.1 says "initial proofs of concept (PoCs) have begun to circulate" ([source](https://cert.europa.eu/publications/security-advisories/2026-018/)). Tenable reports that "watchTowr says it has reproduced both vulnerabilities and is observing exploitation attempts against both", and quotes the PHP Foundation that the PHP security team "did not identify any functional exploits at the time of release/public disclosure" among the leaked PoCs ([source](https://www.tenable.com/blog/php2shell-cve-2026-109618-cve-2026-109619-frequently-asked-questions-about-critical-php-remote)). CISA's SSVC entry in NVD records exploitation "none" as of 10:34 AM ET ([source](https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-109618)).
 - **KEV:** neither CVE in the CISA KEV catalog (version 2026.10.21, released 10:04 AM ET, checked 2:53 PM ET) ([source](https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json)).
 - **NVD:** both CVEs published 10:17 AM ET; NVD's own CVSS 3.1 score is 9.8 Critical, alongside PHP's CVSS 4.0 9.2 ([source](https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-109618), [source](https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-109619)).
+- **Unconfirmed, and reportedly dismissed: a further bug in 8.5.12.** A Fediverse user posting as @elise@katze.sh wrote "still works on 8.5.12!" at 10:32 AM ET about an issue they had earlier called "another one", not the same vulnerability, and "confirmed working on 8.5.10 too" ([source](https://fedi.katze.sh/@elise/117479383739450605), [source](https://fedi.katze.sh/@elise/117478655339557825)); at 10:51 AM ET they wrote "and, reported! 3 line PoC" ([source](https://fedi.katze.sh/@elise/117479459565085083)). An oss-security reply at 11:24 AM ET said "the fix to at least PHP 8.5.12 may be incomplete", and one at 11:41 AM ET relayed that it "seems like a *different* vulnerability" ([source](https://www.openwall.com/lists/oss-security/2026/10/21/16), [source](https://www.openwall.com/lists/oss-security/2026/10/21/17)). At 1:29 PM ET the same oss-security poster relayed, from a Matrix conversation, that Canonical asked PHP and was told it is "unrelated and not a real issue", and asked the PHP security team to reconfirm on the list ([source](https://www.openwall.com/lists/oss-security/2026/10/21/23)). No CVE or impact assessment is public, and php.net and both GitHub advisories say nothing about a further bug. PHP's advice to update to the released versions stands.
 - **Unresolved:** Red Hat and AlmaLinux errata, Plesk's fix for its own panel PHP (sw-engine), and whether exploitation in the wild is confirmed.
 
 ## Table of Contents
@@ -119,11 +120,16 @@ Most servers do not install PHP from php.net. The fix reaches you through your p
 
 | Time (ET) | Event |
 |---|---|
+| 2026-10-21 3:16 PM | The CVE Program's record for CVE-2026-109619, mirrored in NVD, adds the 11:24 and 11:41 AM oss-security replies as references ([source](https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-109619)) |
 | 2026-10-21 2:53 PM | Ubuntu (USN-8948-1, -2), Debian (DSA-6574-1, DLA-4848-1), Ondrej PPA and Plesk show fixed builds; Red Hat and AlmaLinux have no erratum; neither CVE in KEV (see [Where Patches Will Come From](#where-patches-will-come-from)) |
 | 2026-10-21 2:50 PM | Plesk support article updated: fixed PHP 8.2 to 8.5 for Linux and Windows, panel sw-engine fix still planned as a hotfix ([source](https://support.plesk.com/hc/en-us/articles/44397729587351-Vulnerability-CVE-2026-109618-and-CVE-2026-109619-Remote-code-execution-in-PHP-shipped-with-Plesk)) |
 | 2026-10-21 1:17 PM | CloudLinux Imunify360 WAF ruleset 8.85 rolled out, following 8.83 and 8.84 earlier in the day ([source](https://cloudlinux.statuspage.io/incidents/zl0vt1yq3dj5)) |
+| 2026-10-21 1:29 PM | oss-security reply relays, secondhand from a Matrix conversation, that PHP told Canonical the 8.5.12 claim is "unrelated and not a real issue" ([source](https://www.openwall.com/lists/oss-security/2026/10/21/23)) |
 | 2026-10-21 12:45 PM | Earliest Docker Hub last-push time among the fixed `php` image tags (8.2.35, 8.3.36, 8.4.27, 8.5.12) ([source](https://hub.docker.com/_/php)) |
+| 2026-10-21 11:24 AM | oss-security reply: "the fix to at least PHP 8.5.12 may be incomplete", citing a Fediverse post; a second reply at 11:41 AM relays that it "seems like a *different* vulnerability" ([source](https://www.openwall.com/lists/oss-security/2026/10/21/16), [source](https://www.openwall.com/lists/oss-security/2026/10/21/17)) |
+| 2026-10-21 10:51 AM | @elise@katze.sh: "and, reported! 3 line PoC" ([source](https://fedi.katze.sh/@elise/117479459565085083)) |
 | 2026-10-21 10:34 AM | CISA SSVC entry added in NVD: exploitation "none", automatable "no" ([source](https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-109618)) |
+| 2026-10-21 10:32 AM | @elise@katze.sh: "still works on 8.5.12!" ([source](https://fedi.katze.sh/@elise/117479383739450605)) |
 | 2026-10-21 10:21 AM | Remi repository maintainer: updates for "Fedora 43+, RHEL 8+", none for EL7 ([source](https://github.com/remicollet/remirepo/issues/351)) |
 | 2026-10-21 10:17 AM | NVD publishes both CVEs; NVD scores them CVSS 3.1 9.8 ([source](https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-109618)) |
 | 2026-10-21 10:11 AM | NCSC-NL rewrites its readme around PHP's official advisory and drops its earlier exploitation assessment ([source](https://github.com/NCSC-NL/php2shell)) |
@@ -162,11 +168,13 @@ Dark web index search (Ahmia) was attempted again at 2:53 PM ET and was unavaila
 | Supported branches and EOL dates | **Medium** by the two-source rule: php.net is the only source, and it is the authority |
 | Interim ini measures | **Medium** that PHP recommends them (one publisher, the PHP project); **Low** as a fix, by PHP's own wording |
 | Active exploitation in the wild | **Low to Medium**: Patchstack and Cloudflare reported early attacks, but Patchstack's newest entry reports probing only, CISA's SSVC entry records exploitation "none", and neither CVE is in KEV; no primary evidence published |
+| A further, separate PHP bug works on 8.5.12 | **Low**: one Fediverse user's own posts, relayed but not confirmed on oss-security; no CVE; a secondhand oss-security relay says PHP called it "unrelated and not a real issue", itself unconfirmed by PHP on the list |
 | Fixed packages from Ubuntu, Debian, Ondrej PPA, Docker and Plesk; none yet from Red Hat or AlmaLinux | **Medium** by the two-source rule for the time checked (2:53 to 2:55 PM ET): each vendor's status comes from one source, its own tracker, feed or registry, which is the authority for that vendor; changes fast |
 
 ## Open Questions
 
 - When Red Hat, AlmaLinux and Remi ship fixed builds, when CloudLinux finishes ea-php, whether cPanel has published an advisory, and when Plesk's sw-engine hotfix lands.
+- Whether the PHP security team confirms on oss-security that the issue reported against 8.5.12 is "not a real issue", as relayed secondhand.
 - Whether exploitation in the wild is confirmed with primary evidence, and when CISA adds either CVE to KEV; neither was listed in catalog version 2026.10.21.
 - Why PHP released before the 10:00 AM ET slot; its pre-announcement reserved early release for public details or active exploitation, and the advisory gives no reason.
 
@@ -182,6 +190,14 @@ Dark web index search (Ahmia) was attempted again at 2:53 PM ET and was unavaila
 - [php-src backport branch, PHP 8.0](https://github.com/php/php-src/tree/PHP-8.0-CVE-2026-109618-109619)
 - [php-src backport branch, PHP 8.1](https://github.com/php/php-src/tree/PHP-8.1-CVE-2026-109618-109619)
 - [oss-security relay, 2026-10-20](https://www.openwall.com/lists/oss-security/2026/10/20/34)
+- [oss-security reply: 8.5.12 fix may be incomplete, 2026-10-21](https://www.openwall.com/lists/oss-security/2026/10/21/16)
+- [oss-security reply: possibly a different vulnerability, 2026-10-21](https://www.openwall.com/lists/oss-security/2026/10/21/17)
+- [oss-security reply: PHP reportedly says "not a real issue", 2026-10-21](https://www.openwall.com/lists/oss-security/2026/10/21/23)
+
+**Fediverse posts (unconfirmed)**
+- [@elise@katze.sh: "still works on 8.5.12!"](https://fedi.katze.sh/@elise/117479383739450605)
+- [@elise@katze.sh: "this is another one"](https://fedi.katze.sh/@elise/117478655339557825)
+- [@elise@katze.sh: "and, reported!"](https://fedi.katze.sh/@elise/117479459565085083)
 
 **Government CERT**
 - [CERT-EU Security Advisory 2026-018](https://cert.europa.eu/publications/security-advisories/2026-018/)
@@ -223,6 +239,8 @@ Dark web index search (Ahmia) was attempted again at 2:53 PM ET and was unavaila
 
 | Time (ET) | Report change |
 |---|---|
+| 2026-10-21 3:24 PM | Verification fixes: added the 1:29 PM ET oss-security reply relaying PHP's reported "not a real issue" answer, softened the banner, cited the "reported!" post directly, called the poster a Fediverse user rather than a researcher (no such claim in the profile), and narrowed "no details public" to no CVE or impact assessment. |
+| 2026-10-21 3:24 PM | Unconfirmed report of a further, separate bug that still works on 8.5.12 added (Fediverse posts and oss-security replies, surfaced when NVD added two of them as references at 3:16 PM ET), labelled Low confidence. php.net, GHSAs, distro trackers, CERT-EU, Patchstack, NCSC-NL and Remi rechecked at 3:23 PM ET with no change; KEV still not listed. |
 | 2026-10-21 2:57 PM | Verification fixes: stale CERT-EU v1.0 statements (release date, "PHP 5 onwards", first recommendation) replaced with v1.1 text and Wiz's version range; stale Patchstack "loosely on multipart" and `use_strict_mode` advice removed; Docker push window corrected to start at 12:45 PM ET; CloudLinux row recited to its status page and ea-php moved to the cPanel row; Tenable's watchTowr exploitation-attempt report and the PHP Foundation's "no functional exploits" finding added; packages confidence lowered to Medium (one source per vendor); stale NVD note and unverifiable Tenable leg removed from confidence rows; timeline reordered. |
 | 2026-10-21 2:57 PM | Packages: Ubuntu, Debian, Ondrej PPA, Docker and Plesk now fixed; CloudLinux in progress; Red Hat rated Important with no erratum; AlmaLinux none. NVD records and CISA SSVC added; KEV 2026.10.21 rechecked (not listed). NCSC-NL quotes repinned to the readme revision that carried them, since its 10:11 AM ET rewrite dropped them. Wiz Research writeup and detection signs added. Threat intel rechecked (no hits); dark web search attempted, unavailable. |
 | 2026-10-21 9:53 AM | Verification fixes: timestamps corrected to the real check and publish times, Patchstack exploitation wording narrowed, confidence rows given second sources or relabelled Medium (single publisher). |
