@@ -1,26 +1,26 @@
 ---
 title: "PHP critical security release, October 2026 (CVE-2026-109618, CVE-2026-109619)"
 date: 2026-10-21
-updated: 2026-10-21 9:21 AM ET
-summary: "PHP ships fixes for two critical (CVSS 4.0 9.2) vulnerabilities on 21 Oct 2026 at 10:00 AM ET. Details leaked early, early attacks are reported, and patching is the only reliable fix."
+updated: 2026-10-21 9:46 AM ET
+summary: "PHP released 8.5.12, 8.4.27, 8.3.36 and 8.2.35 on 21 Oct 2026, ahead of the 10:00 AM ET slot, fixing two critical (CVSS 4.0 9.2) unauthenticated remote code execution bugs. Update as soon as your package source ships the fix."
 ---
 
 # PHP critical security release, October 2026
 
-**Status at 9:21 AM ET, 21 Oct 2026: fixes NOT yet released.** This page is re-checked after the 10:00 AM ET release and every 30 minutes for two days.
+**Status at 9:46 AM ET, 21 Oct 2026: fixes RELEASED.** PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 are out, ahead of the 10:00 AM ET slot. Full advisory details and package status follow in the next update. This page is re-checked every 30 minutes for two days.
 
 ## TL;DR
 
-PHP's security team will ship fixes for two critical vulnerabilities, each rated CVSS v4.0 9.2, on Wednesday 21 October 2026 at 14:00 UTC (10:00 AM ET), and has not yet published affected or fixed versions ([source](https://www.php.net/)). Details leaked ahead of the coordinated release, and security vendors report early attacks, so anyone running PHP on the internet should be ready to update the moment fixed builds reach their package source ([source](https://sansec.io/research/php2shell)). Configuration tweaks reduce exposure at best; PHP developers say patching is the only real fix ([source](https://sansec.io/research/php2shell)).
+PHP released 8.5.12, 8.4.27, 8.3.36 and 8.2.35 on 21 October 2026, saying they "fix two critical vulnerabilities that can allow unauthenticated remote code execution" and that "All PHP users are strongly encouraged to update immediately" ([source](https://www.php.net/archive/2026.php#2026-10-21-5)). Details leaked ahead of the coordinated release, and security vendors reported early attacks ([source](https://sansec.io/research/php2shell)). Update as soon as your package source ships the fix: php.net says "There are no complete mitigations, updating is the only safe choice" ([source](https://www.php.net/)), and "Linux distributions and LTS vendors received the patches in advance, so check your vendor for updated packages" ([source](https://www.php.net/archive/2026.php#2026-10-21-5)).
 
 ## Current Status
 
-- **Release: pending.** php.net's newest listed versions are still 8.5.11, 8.4.26, 8.3.35 and 8.2.34 ([source](https://www.php.net/)).
+- **Release: out.** php.net lists PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 and a security advisory, "Critical remote code execution vulnerabilities, update now" (seen 9:37 AM ET, rechecked 9:44 AM ET) ([source](https://www.php.net/archive/2026.php#2026-10-21-5)). The two GitHub security advisories were published at 9:34 AM ET ([source](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w), [source](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp)).
 - **Severity:** two critical vulnerabilities, both CVSS v4.0 9.2 ([source](https://www.php.net/)).
-- **CVE IDs** CVE-2026-109618 and CVE-2026-109619 come from CERT-EU and security vendors, not yet from php.net ([source](https://cert.europa.eu/publications/security-advisories/2026-018/)).
+- **CVE IDs** CVE-2026-109618 and CVE-2026-109619 are now named in php.net's own release notes ([source](https://www.php.net/)).
 - **Exploitation:** Patchstack reports active exploitation from multiple hosting partners, and Cloudflare reports early attacks ([source](https://patchstack.com/articles/php-major-vulnerability-alert-10-2026/)). Neither CVE is in the CISA KEV catalog (version 2026.10.20, checked 9:17 AM ET) ([source](https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json)).
 - **Distro packages:** Ubuntu published both CVEs at Critical priority, every PHP package still "Needs evaluation" (no fixed packages) as of 9:19 AM ET ([109618](https://ubuntu.com/security/CVE-2026-109618), [109619](https://ubuntu.com/security/CVE-2026-109619)). Debian and Red Hat had no CVE page at 8:4x AM ET.
-- **Unresolved:** affected SAPIs, attack preconditions, fixed version numbers, official mitigations.
+- **Unresolved in this edition:** affected SAPIs, preconditions and official mitigations are in the advisories and will be summarized in the next update.
 
 ## Table of Contents
 
@@ -81,7 +81,7 @@ None of these is official guidance from php.net, and the sources disagree.
 
 ### End-of-life PHP
 
-php.net lists security support ending 31 Dec 2026 for 8.2, 31 Dec 2027 for 8.3, 31 Dec 2028 for 8.4 and 31 Dec 2029 for 8.5; older branches are end of life ([source](https://www.php.net/supported-versions.php)). Tenable says end-of-life branches are not expected to receive fixes ([source](https://www.tenable.com/blog/php2shell-cve-2026-109618-cve-2026-109619-frequently-asked-questions-about-critical-php-remote)). Version numbers reported before the release point to 8.5.12, 8.4.27, 8.3.36 and 8.2.35 (Tenable, unconfirmed by php.net).
+php.net lists security support ending 31 Dec 2026 for 8.2, 31 Dec 2027 for 8.3, 31 Dec 2028 for 8.4 and 31 Dec 2029 for 8.5; older branches are end of life ([source](https://www.php.net/supported-versions.php)). Tenable says end-of-life branches are not expected to receive fixes ([source](https://www.tenable.com/blog/php2shell-cve-2026-109618-cve-2026-109619-frequently-asked-questions-about-critical-php-remote)). The fixed versions are 8.5.12, 8.4.27, 8.3.36 and 8.2.35 ([source](https://www.php.net/archive/2026.php#2026-10-21-5)).
 
 ## Where Patches Will Come From
 
@@ -99,7 +99,8 @@ Most servers do not install PHP from php.net. The fix reaches you through your p
 
 | Time (ET) | Event |
 |---|---|
-| 2026-10-21 10:00 AM | Scheduled release ([source](https://www.php.net/)). **Pending at last check.** |
+| 2026-10-21 9:37 AM | php.net lists 8.5.12, 8.4.27, 8.3.36 and 8.2.35 and the security advisory, ahead of the 10:00 AM slot ([source](https://www.php.net/archive/2026.php#2026-10-21-5)) |
+| 2026-10-21 9:34 AM | GitHub advisories GHSA-w8hw-w9fx-j79w and GHSA-6wmf-4rv5-p3rp published ([source](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w), [source](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp)) |
 | 2026-10-21 9:19 AM | Ubuntu CVE pages live for both CVEs, priority Critical, no fixed packages yet ([source](https://ubuntu.com/security/CVE-2026-109618)) |
 | 2026-10-21 | Sansec analysis ([source](https://sansec.io/research/php2shell)) |
 | 2026-10-21 3:43 AM | Cloudflare reports early attacks against PHP sites, per Sansec ([source](https://sansec.io/research/php2shell)) |
@@ -126,11 +127,11 @@ Dark web index search (Ahmia) was attempted at 9:15 AM ET and failed: the search
 | Early attacks / active exploitation | **Medium**: Patchstack and Cloudflare (via Sansec and Tenable); no primary evidence published |
 | Affected range "PHP 5 onwards" | **Medium-Low**: CERT-EU says "could affect"; Sansec's figure rests on a leaked tool banner |
 | ini settings as mitigation | **Low** as a fix; PHP developers quoted against relying on it |
-| Fixed version numbers 8.5.12 / 8.4.27 / 8.3.36 / 8.2.35 | **Low** until php.net publishes |
+| Fixed version numbers 8.5.12 / 8.4.27 / 8.3.36 / 8.2.35 | **High** (php.net release notes and advisory) |
 
 ## Open Questions
 
-- Fixed versions, affected SAPIs (FPM, CGI, mod_php, CLI) and preconditions: due with the release.
+- Affected SAPIs and preconditions: published in the advisories, summary in the next update.
 - When Debian, Ubuntu, RHEL-family, Plesk, cPanel and the Docker `php` image ship builds.
 - When CISA adds either CVE to KEV; neither was listed in catalog version 2026.10.20.
 - Whether any official mitigation exists for systems that cannot patch.
@@ -138,6 +139,9 @@ Dark web index search (Ahmia) was attempted at 9:15 AM ET and failed: the search
 ## Sources
 
 **Official**
+- [php.net: Security advisory, Critical remote code execution vulnerabilities](https://www.php.net/archive/2026.php#2026-10-21-5)
+- [GHSA-w8hw-w9fx-j79w](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w)
+- [GHSA-6wmf-4rv5-p3rp](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp)
 - [php.net: Upcoming Critical PHP Security Release](https://www.php.net/)
 - [php.net: Supported Versions](https://www.php.net/supported-versions.php)
 - [oss-security relay, 2026-10-20](https://www.openwall.com/lists/oss-security/2026/10/20/34)
@@ -164,6 +168,7 @@ Dark web index search (Ahmia) was attempted at 9:15 AM ET and failed: the search
 
 | Time (ET) | Report change |
 |---|---|
+| 2026-10-21 9:46 AM | **Release landed** (headline update): fixed versions, release time and CVE naming from php.net. Details to follow. |
 | 2026-10-21 9:21 AM | Verification fixes: IOC control narrowed (ThreatFox and OTX unproven), both Ubuntu pages cited, Debian and Red Hat check times shown, timeline order. |
 | 2026-10-21 9:19 AM | Ubuntu CVE pages published (Critical, no fixes yet). |
 | 2026-10-21 9:17 AM | Threat intel added: CISA KEV checked directly (not listed), feed search for indicators (none), dark web search attempted (search engine unavailable). |
