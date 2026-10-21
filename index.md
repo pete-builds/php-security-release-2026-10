@@ -1,13 +1,13 @@
 ---
 title: "PHP critical security release, October 2026 (CVE-2026-109618, CVE-2026-109619)"
 date: 2026-10-21
-updated: 2026-10-21 8:58 AM ET
+updated: 2026-10-21 9:19 AM ET
 summary: "PHP ships fixes for two critical (CVSS 4.0 9.2) vulnerabilities on 21 Oct 2026 at 10:00 AM ET. Details leaked early, early attacks are reported, and patching is the only reliable fix."
 ---
 
 # PHP critical security release, October 2026
 
-**Status at 8:58 AM ET, 21 Oct 2026: fixes NOT yet released.** This page is re-checked after the 10:00 AM ET release and every 30 minutes for two days.
+**Status at 9:19 AM ET, 21 Oct 2026: fixes NOT yet released.** This page is re-checked after the 10:00 AM ET release and every 30 minutes for two days.
 
 ## TL;DR
 
@@ -18,8 +18,8 @@ PHP's security team will ship fixes for two critical vulnerabilities, each rated
 - **Release: pending.** php.net's newest listed versions are still 8.5.11, 8.4.26, 8.3.35 and 8.2.34 ([source](https://www.php.net/)).
 - **Severity:** two critical vulnerabilities, both CVSS v4.0 9.2 ([source](https://www.php.net/)).
 - **CVE IDs** CVE-2026-109618 and CVE-2026-109619 come from CERT-EU and security vendors, not yet from php.net ([source](https://cert.europa.eu/publications/security-advisories/2026-018/)).
-- **Exploitation:** Patchstack reports active exploitation from multiple hosting partners, and Cloudflare reports early attacks ([source](https://patchstack.com/articles/php-major-vulnerability-alert-10-2026/)). CISA KEV status not established.
-- **Distro packages:** Debian, Ubuntu and Red Hat had no CVE page yet at 8:4x AM ET (all HTTP 404).
+- **Exploitation:** Patchstack reports active exploitation from multiple hosting partners, and Cloudflare reports early attacks ([source](https://patchstack.com/articles/php-major-vulnerability-alert-10-2026/)). Neither CVE is in the CISA KEV catalog (version 2026.10.20, checked 9:17 AM ET) ([source](https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json)).
+- **Distro packages:** Ubuntu published both CVEs at Critical priority, every PHP package still "Needs evaluation" (no fixed packages) as of 9:19 AM ET ([source](https://ubuntu.com/security/CVE-2026-109618)). Debian and Red Hat had no CVE page at last check.
 - **Unresolved:** affected SAPIs, attack preconditions, fixed version numbers, official mitigations.
 
 ## Table of Contents
@@ -87,10 +87,10 @@ php.net lists security support ending 31 Dec 2026 for 8.2, 31 Dec 2027 for 8.3, 
 
 Most servers do not install PHP from php.net. The fix reaches you through your package source, and each moves on its own clock.
 
-| Source | Status at 8:4x AM ET |
+| Source | Status at last check |
 |---|---|
 | [Debian security tracker](https://security-tracker.debian.org/tracker/CVE-2026-109618) | No page for CVE-2026-109618 (HTTP 404) |
-| [Ubuntu CVE tracker](https://ubuntu.com/security/CVE-2026-109618) | No page (HTTP 404) |
+| Ubuntu CVE tracker | Published 21 Oct, priority Critical, description "Remote code execution issue"; every listed PHP package "Needs evaluation", none fixed, at 9:19 AM ET ([109618](https://ubuntu.com/security/CVE-2026-109618), [109619](https://ubuntu.com/security/CVE-2026-109619)). Notes reference GitHub advisories GHSA-w8hw-w9fx-j79w and GHSA-6wmf-4rv5-p3rp, not yet public (404). |
 | [Red Hat CVE database](https://access.redhat.com/security/cve/CVE-2026-109618) | No page (HTTP 404; page may render client-side) |
 | Remi's repository (RHEL family) | Sansec reports it will not get the fix on 21 Oct ([source](https://sansec.io/research/php2shell)); an open issue asks about it with no maintainer reply ([source](https://github.com/remicollet/remirepo/issues/351)) |
 | Hosting panels, Docker image, Ondrej PPA | Not yet checked against a first-party page |
@@ -99,6 +99,7 @@ Most servers do not install PHP from php.net. The fix reaches you through your p
 
 | Time (ET) | Event |
 |---|---|
+| 2026-10-21 9:19 AM | Ubuntu CVE pages live for both CVEs, priority Critical, no fixed packages yet ([source](https://ubuntu.com/security/CVE-2026-109618)) |
 | 2026-10-21 10:00 AM | Scheduled release ([source](https://www.php.net/)). **Pending at last check.** |
 | 2026-10-21 | Sansec analysis ([source](https://sansec.io/research/php2shell)) |
 | 2026-10-21 3:43 AM | Cloudflare reports early attacks against PHP sites, per Sansec ([source](https://sansec.io/research/php2shell)) |
@@ -109,11 +110,11 @@ Most servers do not install PHP from php.net. The fix reaches you through your p
 
 ## Indicators of Compromise
 
-No official source has published indicators of compromise as of 8:49 AM ET. None of the vendor posts reviewed included primary exploitation evidence.
+No official source has published indicators of compromise as of 9:17 AM ET, and none of the vendor posts reviewed included primary exploitation evidence. A search of abuse.ch ThreatFox, URLhaus and MalwareBazaar, AlienVault OTX and the CISA KEV catalog, synced 8:25 AM ET, returned no indicators, pulses or entries for CVE-2026-109618, CVE-2026-109619 or Calif.io. A control search for "PHP" in the same index returned results, so the empty result reflects the feeds, not a broken search.
 
 ## Dark Web and Threat Actor Footprint
 
-Not searched for this edition: no threat-intelligence feed was available to this run. The only actor-adjacent detail found is the "PHP2Shell" exploit: Sansec describes a leaked screenshot of the tool credited to Calif.IO ([source](https://sansec.io/research/php2shell)), and Tenable reports a video by researcher Kirill Firsov demonstrating the exploit chain, credited to LCFR and Calif.io, and says code claiming to exploit the bugs is circulating publicly but unverified ([source](https://www.tenable.com/blog/php2shell-cve-2026-109618-cve-2026-109619-frequently-asked-questions-about-critical-php-remote)).
+Dark web index search (Ahmia) was attempted at 9:15 AM ET and failed: the search engine redirected every query, so no dark web result exists for this edition, positive or negative. The only actor-adjacent detail found is the "PHP2Shell" exploit: Sansec describes a leaked screenshot of the tool credited to Calif.IO ([source](https://sansec.io/research/php2shell)), and Tenable reports a video by researcher Kirill Firsov demonstrating the exploit chain, credited to LCFR and Calif.io, and says code claiming to exploit the bugs is circulating publicly but unverified ([source](https://www.tenable.com/blog/php2shell-cve-2026-109618-cve-2026-109619-frequently-asked-questions-about-critical-php-remote)).
 
 ## Confidence Assessment
 
@@ -131,7 +132,7 @@ Not searched for this edition: no threat-intelligence feed was available to this
 
 - Fixed versions, affected SAPIs (FPM, CGI, mod_php, CLI) and preconditions: due with the release.
 - When Debian, Ubuntu, RHEL-family, Plesk, cPanel and the Docker `php` image ship builds.
-- Whether either CVE is, or gets, listed in CISA KEV (not checked directly).
+- When CISA adds either CVE to KEV; neither was listed in catalog version 2026.10.20.
 - Whether any official mitigation exists for systems that cannot patch.
 
 ## Sources
@@ -150,15 +151,20 @@ Not searched for this edition: no threat-intelligence feed was available to this
 - [Tenable FAQ](https://www.tenable.com/blog/php2shell-cve-2026-109618-cve-2026-109619-frequently-asked-questions-about-critical-php-remote)
 
 **Package sources**
+- [Ubuntu: CVE-2026-109618](https://ubuntu.com/security/CVE-2026-109618)
+- [Ubuntu: CVE-2026-109619](https://ubuntu.com/security/CVE-2026-109619)
 - [Remi repository issue #351](https://github.com/remicollet/remirepo/issues/351)
 
-**CVE databases**
+**CVE databases and threat feeds**
+- [CISA Known Exploited Vulnerabilities catalog (JSON feed)](https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json)
 - [NVD API, CVE-2026-109618](https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-109618)
 - [CVE.org API, CVE-2026-109618](https://cveawg.mitre.org/api/cve/CVE-2026-109618)
 
 ## Update History
 
-| Time (ET) | Change |
+| Time (ET) | Report change |
 |---|---|
+| 2026-10-21 9:19 AM | Ubuntu CVE pages published (Critical, no fixes yet). |
+| 2026-10-21 9:17 AM | Threat intel added: CISA KEV checked directly (not listed), feed search for indicators (none), dark web search attempted (search engine unavailable). |
 | 2026-10-21 8:58 AM | Corrections from cold verification: CERT-EU release date, Patchstack timeline time, KEV claim removed, PHP2Shell video and public code, confidence sourcing, CVE database citations. |
 | 2026-10-21 8:49 AM | First edition, before the release. |
