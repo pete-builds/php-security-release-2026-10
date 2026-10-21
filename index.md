@@ -1,13 +1,13 @@
 ---
 title: "PHP critical security release, October 2026 (CVE-2026-109618, CVE-2026-109619)"
 date: 2026-10-21
-updated: 2026-10-21 3:24 PM ET
-summary: "PHP released 8.5.12, 8.4.27, 8.3.36 and 8.2.35 on 21 Oct 2026, ahead of the 10:00 AM ET slot, fixing two critical (CVSS 4.0 9.2) unauthenticated remote code execution bugs. By 2:55 PM ET Ubuntu, Debian, the Ondrej PPA, the Docker php image and Plesk had fixed builds; Red Hat and AlmaLinux had not published errata."
+updated: 2026-10-21 4:24 PM ET
+summary: "PHP released 8.5.12, 8.4.27, 8.3.36 and 8.2.35 on 21 Oct 2026, ahead of the 10:00 AM ET slot, fixing two critical (CVSS 4.0 9.2) unauthenticated remote code execution bugs. By 4:24 PM ET Ubuntu, Debian, the Ondrej PPA, the Docker php image and Plesk had fixed builds and CloudLinux was partway through; Red Hat and AlmaLinux had not published errata."
 ---
 
 # PHP critical security release, October 2026
 
-**Status at 3:24 PM ET, 21 Oct 2026: fixes RELEASED, packages arriving. An unconfirmed Fediverse claim of a further bug in 8.5.12 was reportedly dismissed by PHP as "not a real issue" (secondhand).** PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 are out. Ubuntu, Debian, the Ondrej PPA, the Docker `php` image and Plesk now ship fixed builds; CloudLinux is rolling out alt-php; Red Hat and AlmaLinux had published no errata at 2:55 PM ET. Neither CVE is in CISA KEV. This page is re-checked every 30 minutes for two days.
+**Status at 4:24 PM ET, 21 Oct 2026: fixes RELEASED, packages arriving. An unconfirmed Fediverse claim of a further bug in 8.5.12 was reportedly dismissed by PHP as "not a real issue" (secondhand).** PHP 8.5.12, 8.4.27, 8.3.36 and 8.2.35 are out. Ubuntu, Debian, the Ondrej PPA, the Docker `php` image and Plesk now ship fixed builds; CloudLinux is rolling out alt-php, with 8.5 expected about 6:30 PM ET; Red Hat and AlmaLinux had published no errata at 2:55 PM ET. Neither CVE is in CISA KEV. This page is re-checked every 30 minutes for two days.
 
 ## TL;DR
 
@@ -22,7 +22,7 @@ PHP released 8.5.12, 8.4.27, 8.3.36 and 8.2.35 on 21 October 2026 to fix two cri
 - **KEV:** neither CVE in the CISA KEV catalog (version 2026.10.21, released 10:04 AM ET, checked 2:53 PM ET) ([source](https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json)).
 - **NVD:** both CVEs published 10:17 AM ET; NVD's own CVSS 3.1 score is 9.8 Critical, alongside PHP's CVSS 4.0 9.2 ([source](https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-109618), [source](https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-109619)).
 - **Unconfirmed, and reportedly dismissed: a further bug in 8.5.12.** A Fediverse user posting as @elise@katze.sh wrote "still works on 8.5.12!" at 10:32 AM ET about an issue they had earlier called "another one", not the same vulnerability, and "confirmed working on 8.5.10 too" ([source](https://fedi.katze.sh/@elise/117479383739450605), [source](https://fedi.katze.sh/@elise/117478655339557825)); at 10:51 AM ET they wrote "and, reported! 3 line PoC" ([source](https://fedi.katze.sh/@elise/117479459565085083)). An oss-security reply at 11:24 AM ET said "the fix to at least PHP 8.5.12 may be incomplete", and one at 11:41 AM ET relayed that it "seems like a *different* vulnerability" ([source](https://www.openwall.com/lists/oss-security/2026/10/21/16), [source](https://www.openwall.com/lists/oss-security/2026/10/21/17)). At 1:29 PM ET the same oss-security poster relayed, from a Matrix conversation, that Canonical asked PHP and was told it is "unrelated and not a real issue", and asked the PHP security team to reconfirm on the list ([source](https://www.openwall.com/lists/oss-security/2026/10/21/23)). No CVE or impact assessment is public, and php.net and both GitHub advisories say nothing about a further bug. PHP's advice to update to the released versions stands.
-- **Unresolved:** Red Hat and AlmaLinux errata, Plesk's fix for its own panel PHP (sw-engine), and whether exploitation in the wild is confirmed.
+- **Unresolved:** Red Hat and AlmaLinux errata, the rest of CloudLinux's alt-php builds, Plesk's fix for its own panel PHP (sw-engine), and whether exploitation in the wild is confirmed.
 
 ## Table of Contents
 
@@ -113,13 +113,14 @@ Most servers do not install PHP from php.net. The fix reaches you through your p
 | [Docker official `php` image](https://hub.docker.com/_/php) | **Fixed:** 8.2.35, 8.3.36, 8.4.27 and 8.5.12 tags present; Docker Hub's last-push times run from 12:45 PM ET, with some 8.5.12 tags re-pushed as late as 3:00 PM ET |
 | Remi's repository (RHEL family) | php.net said on release day "The repo will not have updates today" ([source](https://www.php.net/archive/2026.php#2026-10-21-5)); at 10:21 AM ET the maintainer replied that updates are planned for "Fedora 43+, RHEL 8+", not EL7, with a delay of "<1h for today set", and closed the issue ([source](https://github.com/remicollet/remirepo/issues/351)). Package availability not checked |
 | [Plesk](https://support.plesk.com/hc/en-us/articles/44397729587351-Vulnerability-CVE-2026-109618-and-CVE-2026-109619-Remote-code-execution-in-PHP-shipped-with-Plesk) | **Fixed** for Linux and Windows PHP 8.2 to 8.5; EOL builds 7.4.33, 8.0.30 and 8.1.34 keep their version numbers, and "Versions built on 21 October 2026 have fixes included". The panel's own PHP (sw-engine) is "Planned as hotfix 18.0.80#11 & 18.0.81#4" (article updated 2:50 PM ET) |
-| [CloudLinux](https://cloudlinux.statuspage.io/incidents/zl0vt1yq3dj5) | **In progress:** fixed alt-php and ELS PHP builds released for a growing list of platforms since 10:39 AM ET, with alt-php and ea-php fixes planned "by 19:00 UTC" (3:00 PM ET); Imunify360 WAF rulesets 8.83 to 8.85 block the known exploit request patterns ([source](https://cloudlinux.statuspage.io/incidents/zl0vt1yq3dj5)) |
+| [CloudLinux](https://cloudlinux.statuspage.io/incidents/zl0vt1yq3dj5) | **In progress:** at 4:18 PM ET fixed alt-php builds were in the stable repositories for many CloudLinux, AlmaLinux, Ubuntu, Debian and Alpine releases (alt-php 8.4 on most), with the remaining versions "rolling out continuously; the bulk is expected by ~21:15 UTC, alt-php 8.5 by ~22:30 UTC" (5:15 PM and 6:30 PM ET), later than the earlier "by 19:00 UTC" plan. Until CloudLinux publishes its advisory metadata, "security-only update filters (`yum --security`, `dnf updateinfo`) will not list these packages", so install them with a regular package update. TuxCare ELS/ESU builds are out for RHEL 7, Oracle Linux 6 and 7, CentOS 8.4 and 8.5, Amazon Linux 2 and others. Imunify360 ModSecurity ruleset 8.84 blocks the known exploit pattern, and ruleset 8.85 (1:17 PM ET) "blocks further variants of the exploit tool" ([source](https://cloudlinux.statuspage.io/incidents/zl0vt1yq3dj5)) |
 | cPanel | No first-party cPanel advisory checked. CloudLinux's status page says patched ea-php74 through ea-php85 "are scheduled for release in EasyApache4 v25.91" ([source](https://cloudlinux.statuspage.io/incidents/zl0vt1yq3dj5)) |
 
 ## Timeline
 
 | Time (ET) | Event |
 |---|---|
+| 2026-10-21 4:18 PM | CloudLinux: alt-php fixes in stable repos for many platforms, remaining versions now expected by 5:15 PM ET and alt-php 8.5 by 6:30 PM ET; security-only update filters will not list them until advisory metadata is published ([source](https://cloudlinux.statuspage.io/incidents/zl0vt1yq3dj5)) |
 | 2026-10-21 3:16 PM | The CVE Program's record for CVE-2026-109619, mirrored in NVD, adds the 11:24 and 11:41 AM oss-security replies as references ([source](https://services.nvd.nist.gov/rest/json/cves/2.0?cveId=CVE-2026-109619)) |
 | 2026-10-21 2:53 PM | Ubuntu (USN-8948-1, -2), Debian (DSA-6574-1, DLA-4848-1), Ondrej PPA and Plesk show fixed builds; Red Hat and AlmaLinux have no erratum; neither CVE in KEV (see [Where Patches Will Come From](#where-patches-will-come-from)) |
 | 2026-10-21 2:50 PM | Plesk support article updated: fixed PHP 8.2 to 8.5 for Linux and Windows, panel sw-engine fix still planned as a hotfix ([source](https://support.plesk.com/hc/en-us/articles/44397729587351-Vulnerability-CVE-2026-109618-and-CVE-2026-109619-Remote-code-execution-in-PHP-shipped-with-Plesk)) |
@@ -173,7 +174,7 @@ Dark web index search (Ahmia) was attempted again at 2:53 PM ET and was unavaila
 
 ## Open Questions
 
-- When Red Hat, AlmaLinux and Remi ship fixed builds, when CloudLinux finishes ea-php, whether cPanel has published an advisory, and when Plesk's sw-engine hotfix lands.
+- When Red Hat, AlmaLinux and Remi ship fixed builds, when CloudLinux finishes alt-php (8.5 expected about 6:30 PM ET), whether cPanel has published an advisory, and when Plesk's sw-engine hotfix lands.
 - Whether the PHP security team confirms on oss-security that the issue reported against 8.5.12 is "not a real issue", as relayed secondhand.
 - Whether exploitation in the wild is confirmed with primary evidence, and when CISA adds either CVE to KEV; neither was listed in catalog version 2026.10.21.
 - Why PHP released before the 10:00 AM ET slot; its pre-announcement reserved early release for public details or active exploitation, and the advisory gives no reason.
@@ -239,6 +240,7 @@ Dark web index search (Ahmia) was attempted again at 2:53 PM ET and was unavaila
 
 | Time (ET) | Report change |
 |---|---|
+| 2026-10-21 4:24 PM | CloudLinux status update (4:18 PM ET): alt-php availability, revised timing (bulk 5:15 PM ET, 8.5 at 6:30 PM ET) and the security-filter caveat added; stale ea-php wording in Open Questions corrected; verification added ruleset 8.85 and refreshed the summary line. Other watch-list sources unchanged; no new oss-security posts on PHP since 1:29 PM ET; KEV still not listed. |
 | 2026-10-21 3:24 PM | Verification fixes: added the 1:29 PM ET oss-security reply relaying PHP's reported "not a real issue" answer, softened the banner, cited the "reported!" post directly, called the poster a Fediverse user rather than a researcher (no such claim in the profile), and narrowed "no details public" to no CVE or impact assessment. |
 | 2026-10-21 3:24 PM | Unconfirmed report of a further, separate bug that still works on 8.5.12 added (Fediverse posts and oss-security replies, surfaced when NVD added two of them as references at 3:16 PM ET), labelled Low confidence. php.net, GHSAs, distro trackers, CERT-EU, Patchstack, NCSC-NL and Remi rechecked at 3:23 PM ET with no change; KEV still not listed. |
 | 2026-10-21 2:57 PM | Verification fixes: stale CERT-EU v1.0 statements (release date, "PHP 5 onwards", first recommendation) replaced with v1.1 text and Wiz's version range; stale Patchstack "loosely on multipart" and `use_strict_mode` advice removed; Docker push window corrected to start at 12:45 PM ET; CloudLinux row recited to its status page and ea-php moved to the cPanel row; Tenable's watchTowr exploitation-attempt report and the PHP Foundation's "no functional exploits" finding added; packages confidence lowered to Medium (one source per vendor); stale NVD note and unverifiable Tenable leg removed from confidence rows; timeline reordered. |
