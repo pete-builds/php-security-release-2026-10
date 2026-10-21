@@ -1,13 +1,13 @@
 ---
 title: "PHP critical security release, October 2026 (CVE-2026-109618, CVE-2026-109619)"
 date: 2026-10-21
-updated: 2026-10-21 9:19 AM ET
+updated: 2026-10-21 9:21 AM ET
 summary: "PHP ships fixes for two critical (CVSS 4.0 9.2) vulnerabilities on 21 Oct 2026 at 10:00 AM ET. Details leaked early, early attacks are reported, and patching is the only reliable fix."
 ---
 
 # PHP critical security release, October 2026
 
-**Status at 9:19 AM ET, 21 Oct 2026: fixes NOT yet released.** This page is re-checked after the 10:00 AM ET release and every 30 minutes for two days.
+**Status at 9:21 AM ET, 21 Oct 2026: fixes NOT yet released.** This page is re-checked after the 10:00 AM ET release and every 30 minutes for two days.
 
 ## TL;DR
 
@@ -19,7 +19,7 @@ PHP's security team will ship fixes for two critical vulnerabilities, each rated
 - **Severity:** two critical vulnerabilities, both CVSS v4.0 9.2 ([source](https://www.php.net/)).
 - **CVE IDs** CVE-2026-109618 and CVE-2026-109619 come from CERT-EU and security vendors, not yet from php.net ([source](https://cert.europa.eu/publications/security-advisories/2026-018/)).
 - **Exploitation:** Patchstack reports active exploitation from multiple hosting partners, and Cloudflare reports early attacks ([source](https://patchstack.com/articles/php-major-vulnerability-alert-10-2026/)). Neither CVE is in the CISA KEV catalog (version 2026.10.20, checked 9:17 AM ET) ([source](https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json)).
-- **Distro packages:** Ubuntu published both CVEs at Critical priority, every PHP package still "Needs evaluation" (no fixed packages) as of 9:19 AM ET ([source](https://ubuntu.com/security/CVE-2026-109618)). Debian and Red Hat had no CVE page at last check.
+- **Distro packages:** Ubuntu published both CVEs at Critical priority, every PHP package still "Needs evaluation" (no fixed packages) as of 9:19 AM ET ([109618](https://ubuntu.com/security/CVE-2026-109618), [109619](https://ubuntu.com/security/CVE-2026-109619)). Debian and Red Hat had no CVE page at 8:4x AM ET.
 - **Unresolved:** affected SAPIs, attack preconditions, fixed version numbers, official mitigations.
 
 ## Table of Contents
@@ -89,9 +89,9 @@ Most servers do not install PHP from php.net. The fix reaches you through your p
 
 | Source | Status at last check |
 |---|---|
-| [Debian security tracker](https://security-tracker.debian.org/tracker/CVE-2026-109618) | No page for CVE-2026-109618 (HTTP 404) |
+| [Debian security tracker](https://security-tracker.debian.org/tracker/CVE-2026-109618) | No page for CVE-2026-109618 (HTTP 404 at 8:4x AM ET) |
 | Ubuntu CVE tracker | Published 21 Oct, priority Critical, description "Remote code execution issue"; every listed PHP package "Needs evaluation", none fixed, at 9:19 AM ET ([109618](https://ubuntu.com/security/CVE-2026-109618), [109619](https://ubuntu.com/security/CVE-2026-109619)). Notes reference GitHub advisories GHSA-w8hw-w9fx-j79w and GHSA-6wmf-4rv5-p3rp, not yet public (404). |
-| [Red Hat CVE database](https://access.redhat.com/security/cve/CVE-2026-109618) | No page (HTTP 404; page may render client-side) |
+| [Red Hat CVE database](https://access.redhat.com/security/cve/CVE-2026-109618) | No page (HTTP 404 at 8:4x AM ET; page may render client-side) |
 | Remi's repository (RHEL family) | Sansec reports it will not get the fix on 21 Oct ([source](https://sansec.io/research/php2shell)); an open issue asks about it with no maintainer reply ([source](https://github.com/remicollet/remirepo/issues/351)) |
 | Hosting panels, Docker image, Ondrej PPA | Not yet checked against a first-party page |
 
@@ -99,8 +99,8 @@ Most servers do not install PHP from php.net. The fix reaches you through your p
 
 | Time (ET) | Event |
 |---|---|
-| 2026-10-21 9:19 AM | Ubuntu CVE pages live for both CVEs, priority Critical, no fixed packages yet ([source](https://ubuntu.com/security/CVE-2026-109618)) |
 | 2026-10-21 10:00 AM | Scheduled release ([source](https://www.php.net/)). **Pending at last check.** |
+| 2026-10-21 9:19 AM | Ubuntu CVE pages live for both CVEs, priority Critical, no fixed packages yet ([source](https://ubuntu.com/security/CVE-2026-109618)) |
 | 2026-10-21 | Sansec analysis ([source](https://sansec.io/research/php2shell)) |
 | 2026-10-21 3:43 AM | Cloudflare reports early attacks against PHP sites, per Sansec ([source](https://sansec.io/research/php2shell)) |
 | 2026-10-21 3:34 AM | Multiple active exploitation incidents reported to Patchstack by hosting partners, per Patchstack's timeline ([source](https://patchstack.com/articles/php-major-vulnerability-alert-10-2026/)) |
@@ -110,7 +110,7 @@ Most servers do not install PHP from php.net. The fix reaches you through your p
 
 ## Indicators of Compromise
 
-No official source has published indicators of compromise as of 9:17 AM ET, and none of the vendor posts reviewed included primary exploitation evidence. A search of abuse.ch ThreatFox, URLhaus and MalwareBazaar, AlienVault OTX and the CISA KEV catalog, synced 8:25 AM ET, returned no indicators, pulses or entries for CVE-2026-109618, CVE-2026-109619 or Calif.io. A control search for "PHP" in the same index returned results, so the empty result reflects the feeds, not a broken search.
+No official source has published indicators of compromise as of 9:17 AM ET, and none of the vendor posts reviewed included primary exploitation evidence. A search of abuse.ch ThreatFox, URLhaus and MalwareBazaar, AlienVault OTX and the CISA KEV catalog, synced 8:25 AM ET, returned no indicators, pulses or entries for CVE-2026-109618, CVE-2026-109619 or Calif.io. Control searches returned hits from MalwareBazaar, URLhaus and the KEV catalog, so those empty results are real. ThreatFox and OTX could not be shown to be searchable in this index (ThreatFox returned nothing even for common malware families), so for those two feeds the empty result is not evidence of absence.
 
 ## Dark Web and Threat Actor Footprint
 
@@ -164,6 +164,7 @@ Dark web index search (Ahmia) was attempted at 9:15 AM ET and failed: the search
 
 | Time (ET) | Report change |
 |---|---|
+| 2026-10-21 9:21 AM | Verification fixes: IOC control narrowed (ThreatFox and OTX unproven), both Ubuntu pages cited, Debian and Red Hat check times shown, timeline order. |
 | 2026-10-21 9:19 AM | Ubuntu CVE pages published (Critical, no fixes yet). |
 | 2026-10-21 9:17 AM | Threat intel added: CISA KEV checked directly (not listed), feed search for indicators (none), dark web search attempted (search engine unavailable). |
 | 2026-10-21 8:58 AM | Corrections from cold verification: CERT-EU release date, Patchstack timeline time, KEV claim removed, PHP2Shell video and public code, confidence sourcing, CVE database citations. |
